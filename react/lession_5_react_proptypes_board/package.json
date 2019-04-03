@@ -1,0 +1,16 @@
+{
+  "name": "lession_5_react_proptypes_board",
+  "version": "1.0.0",
+  "description": "1. react-detector extension 2. react-developer extension 3. react dom 4. react babel",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel ./scripts/hello-world.js -d built"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "httpster": "^1.0.4"
+  }
+}

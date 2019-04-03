@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Create React App</title>
+    
+    <!-- <script src="https://unpkg.com/react@0.13.3/dist/react.js"></script> -->
+    <style type="text/css">
+      .box {
+            background-color: goldenrod;
+            width: 200px;
+            height: 260px;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            color: burlywood;
+            font-size: 3.5em;
+            font-family: none;
+            text-transform: uppercase;
+            font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <hr />
+
+
+    <script src="scripts/react/react-16.6.1.min.js"></script>
+    <script src="scripts/react/react-dom-16.6.1.min.js"></script>
+    <script src="scripts/react/babel-core-5.8.29.js"></script>
+    <script src="scripts/react/JSXTransformer-0.13.3.js"></script>
+
+    <script type="text/babel">
+      
+      class Hello extends React.Component {
+        render() {
+          return <h1 style={{marginBottom: 0}}>{this.props.toWhat}</h1>;
+        }
+      }
+
+      ReactDOM.render(
+        <Hello toWhat="React Create React App" />,
+        document.getElementById('root')
+      );
+      
+    </script>
+
+  </body>
+</html>

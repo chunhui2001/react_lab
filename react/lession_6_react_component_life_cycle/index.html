@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>React Component Life Cycle</title>
+    
+    <!-- <script src="https://unpkg.com/react@0.13.3/dist/react.js"></script> -->
+    <style type="text/css">
+      .box {
+            background-color: goldenrod;
+            width: 200px;
+            height: 260px;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+            color: burlywood;
+            font-size: 3.5em;
+            font-family: none;
+            text-transform: uppercase;
+            font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <h3 style="margin-top: 0;">
+      <a style="color: cornflowerblue;font-style: italic;font-weight: normal;" target="_blank"
+         href="https://zhuanlan.zhihu.com/p/38030418">React v16.3之后的组件生命周期函数</a>
+    </h3>
+    <hr />
+    <div>
+      <dl style="display:inline-block">
+        <dt style="float: left;">
+          <strong>Mounting</strong>
+          <ul style="padding-left: 1.325em;">
+            <li>getDefaultProps</li>
+            <li>getInitialState</li>
+            <li>componentWillMount</li>
+            <li>render</li>
+            <li>componentDidMount</li>
+          </ul>
+        </dt>
+        <dt style="float: left;margin-left:2em;">
+          <strong>Updating</strong>
+          <ul style="padding-left: 1.325em;">
+            <li>componentWillReceiveProps</li>
+            <li>shouldComponentUpdate</li>
+            <li>componentWillUpdate</li>
+            <li>render</li>
+            <li>componentDidUpdate</li>
+          </ul>
+        </dt>
+        <dt style="float: left;margin-left:2em;">
+          <strong>Unmounting</strong>
+          <ul style="padding-left: 1.325em;">
+            <li>componentWillUnmount</li>
+          </ul>
+        </dt>
+      </dl>
+    </div>
+
+
+    
+
+    <div id="root1"></div>
+
+
+    <script src="scripts/react/react-16.6.1.min.js"></script>
+    <script src="scripts/react/react-dom-16.6.1.min.js"></script>
+    <script src="scripts/react/babel-core-5.8.29.js"></script>
+    <script src="scripts/react/JSXTransformer-0.13.3.js"></script>
+
+    <script type="text/babel">
+      
+      class Box extends React.Component {
+      
+        componentWillReceiveProps(nextProps) {
+
+          var color = this.props.colors.split(',')[nextProps.colorIndex];
+          
+          if (!color) {
+            this.setProps( { colorIndex:0 } );
+          }
+
+          this.setState( { backgroundColor: color } )
+        
+        }
+
+
+        constructor(props, context){    
+          
+          super(props, context);  
+
+          this.state = {
+              backgroundColor:'blue'
+          };
+
+          console.log(this.props, 'defaultProps');
+
+        }
+
+        componentWillMount() {
+          console.log('1 componentWillMount');
+        }
+
+        componentDidMount() {
+          console.log('3 componentDidMount')
+        }
+
+        update() {
+          console.log('TODO');
+        }
+
+        render() {
+          console.log('2 render');
+          return (<div className="box" onClick={this.update} style={this.state}>
+            <span style={{display: 'block',fontSize: '20px'}}>单击变色</span>
+            <strong style={{display: 'block'}}>box</strong>
+            <span style={{display: 'block',fontSize: '20px'}}>双击删除</span>
+          </div>);
+        }
+
+        componentWillUnmount() {
+          console.log('4 componentWillUnmount');
+        }
+
+      }
+
+      ReactDOM.render(
+        <Box colors="Red,DarkMagenta,Salmon,Chartreuse" />,
+        document.getElementById('root1')
+      );
+
+      // 双击事件
+      var getRidOfBox = document.getElementsByClassName('box')[0];
+
+      getRidOfBox.ondblclick = function () {
+        ReactDOM.unmountComponentAtNode(document.getElementById('root1'));
+      }
+      
+    </script>
+    
+
+
+    <script type="text/babel">
+      
+      class Hello extends React.Component {
+        render() {
+          return <h1 style={{marginBottom: 0}}>{this.props.toWhat}</h1>;
+        }
+      }
+
+      ReactDOM.render(
+        <Hello toWhat="React Component Life Cycle" />,
+        document.getElementById('root')
+      );
+      
+    </script>
+
+  </body>
+</html>
