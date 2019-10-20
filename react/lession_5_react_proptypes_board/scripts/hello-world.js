@@ -6,6 +6,17 @@ class Hello extends React.Component {
 	}
 }
 
+// Hello.propTypes = {
+//      optionalArray: PropTypes.array,//检测数组类型
+//      optionalBool: PropTypes.bool,//检测布尔类型
+//      optionalFunc: PropTypes.func,//检测函数（Function类型）
+//      optionalNumber: PropTypes.number,//检测数字
+//      optionalObject: PropTypes.object,//检测对象
+//      optionalString: PropTypes.string,//检测字符串
+//      optionalSymbol: PropTypes.symbol,//ES6新增的symbol类型
+// }
+
+
 
 class Note extends React.Component {
 
